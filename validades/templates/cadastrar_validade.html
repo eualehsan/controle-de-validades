@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="{% url 'cadastrar_validade' %}" method="POST" class="container">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Produto</span>
+        <select class="input-group-text" name="produto_id">
+            {% for produto in produtos %}
+            <option value="{{ produto.id }}">{{ produto.descricao }}</option>
+            {% endfor %}
+        </select>
+        </div>
+
+        
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Validade</span>
+        <input name="dt_validade" type="date" class="input-group-text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Estoque</span>
+        <input name="estoque" type="number" class="input-group-number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        
+        <input class="btn btn-success" type="submit" value="Cadastrar">
+    </form>
+    
+{% endblock  %}

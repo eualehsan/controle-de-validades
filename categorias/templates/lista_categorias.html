@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+      <table class="table">
+        <a class="btn btn-success" href="{% url 'cadastrar_categoria' %}">Cadastrar categoria</a>
+    <thead>
+      <tr>
+        <th scope="col">Nome da categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for categoria in categorias %}
+      <form action="{% url 'editar_categoria' categoria.id %}" method="POST">
+        {% csrf_token %}
+        <tr>
+            <td><input class="form-control" type="type" name="nome" value="{{ categoria.nome }}"></td>
+            <td><input type="submit" class="btn btn-primary" value="Editar e salvar"></td>
+            <td><a href="{% url 'deleta_categoria' categoria.id %}" class="btn btn-danger">Deletar</a></td>                     
+        </tr>
+      </form>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock  %}

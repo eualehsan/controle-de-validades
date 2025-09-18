@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Controle de validades</h1>
+<ul>
+    <li><a href="{% url 'lista_validades' %}"><i class="fa-solid fa-calendar"></i></i><p>Gerenciar Validades</p></a>
+</li>
+    <li><a href="{% url 'lista_produtos' %}"><i class="fa-solid fa-shop"></i></i><p>Gerenciar Produtos</p></a>
+</li>
+    <li><a href="{% url 'lista_categorias' %}"><i class="fa-solid fa-tag"></i><p>Gerenciar Categorias</p></a></li>
+    <li><a href="{% url 'lista_marcas' %}"><i class="fa-solid fa-building"></i><p>Gerenciar Marcas</p></a></li>
+</ul>
+
+{% endblock content %}
+

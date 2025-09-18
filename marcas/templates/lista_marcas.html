@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+      <table class="table">
+        <a class="btn btn-success" href="{% url 'cadastra_marca' %}">Cadastrar marca</a>
+    <thead>
+      <tr>
+        <th scope="col">Nome da marca</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for marca in marcas %}
+      <form action="{% url 'atualiza_marca' marca.id %}" method="POST">
+        {% csrf_token %}
+        <tr>
+            <td><input class="form-control" type="type" name="nome" value="{{ marca.nome }}"></td>
+            <td><input type="submit" class="btn btn-primary" value="Editar e salvar"></td>
+            <td><a href="{% url 'deleta_marca' marca.id %}" class="btn btn-danger">Deletar</a></td>                     
+        </tr>
+      </form>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock  %}

@@ -1,0 +1,23 @@
+# Ambiente Virtual
+venv/
+env/
+.env
+
+
+*.pyc
+__pycache__/
+*.sqlite3
+
+
+*.log
+media/
+
+
+.DS_Store
+.idea/
+.vscode/
+
+
+db.sqlite3
+manage.py-
+local_settings.py

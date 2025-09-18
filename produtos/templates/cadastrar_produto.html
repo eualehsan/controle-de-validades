@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="{% url 'cadastrar_produto' %}" method="POST" class="container">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Código de barras</span>
+        <input name="codigo_de_barras" maxlength="12" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Descrição</span>
+        <input name="descricao" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Categoria</span>
+        <select class="input-group-text" name="categoria">
+            {% for categoria in categorias %}
+            <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+            {% endfor %}
+        </select>
+        </div>
+
+        
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
+        <select class="input-group-text" name="marca">
+            {% for marca in marcas %}
+            <option value="{{ marca.id }}">{{ marca.nome }}</option>
+            {% endfor %}
+        </select>
+        </div>
+
+        <input class="btn btn-success" type="submit" value="Cadastrar">
+    </form>
+    
+{% endblock  %}
