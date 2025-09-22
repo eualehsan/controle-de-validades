@@ -12,4 +12,9 @@ class Validade(models.Model):
     def dias_p_vencer(self):
         hoje = date.today()
         return (self.dt_validade - hoje).days
+    
+    @property
+    def dias_vencido(self):
+        hoje = date.today()
+        return (hoje - self.dt_validade).days
 

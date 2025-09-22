@@ -27,8 +27,8 @@
             <td>{{ validade.dt_validade | date:"d/m/y" }}</td>
             <td><input class="form-control" type="number" name="estoque" value="{{ validade.estoque }}"></td>
             <td>{% if validade.dias_p_vencer > 0 %} {{ validade.dias_p_vencer }} dias
-                {% else %}
-                <p class="text-bg-danger p-1" style="border-radius: 5px;">Vencido</p>
+                {% elif validade.dias_p_vencer < -1 %} <b style="color: red;">Vencido há {{ validade.dias_vencido }} dias</b>
+                {% else %} <b style="color: red">Vence hoje</b>
                 {% endif %}
             </td>
 
