@@ -6,10 +6,11 @@
         <a class="btn btn-danger" href="{% url 'deleta_todos_produtos' %}">Apagar tudo</a>
     <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">Código EAN</th>
+        <th scope="col">Marca</th>
         <th scope="col">Descrição</th>
         <th scope="col">Categoria</th>
-        <th scope="col">Marca</th>
       </tr>
     </thead>
     <tbody>
@@ -18,16 +19,17 @@
       <form action="{% url 'edita_produto' produto.id %}" method="POST">
         {% csrf_token %}
         <tr>
+            <td><img class="img-produto" src="{{ produto.imagem }}"></td>
             <td><input class="form-control" type="type" name="codigo de barras" value="{{ produto.codigo_barras }}"></td>
+            <td><select class="input-group-text" name="marca">
+              {% for marca in marcas %}
+              <option value="{{ marca.id }}" {% if marca.id == produto.marca.id %}selected{% endif %}>{{ marca.nome }}</option>
+              {% endfor %}
+            </select></td>
             <td><input class="form-control" type="type" name="descricao" value="{{ produto.descricao }}"></td>
             <td><select class="input-group-text" name="categoria">
               {% for categoria in categorias %}
               <option value="{{ categoria.id }}" {% if categoria.id == produto.categoria.id %}selected{% endif %}>{{ categoria.nome }}</option>
-              {% endfor %}
-            </select></td>
-            <td><select class="input-group-text" name="marca">
-              {% for marca in marcas %}
-              <option value="{{ marca.id }}" {% if marca.id == produto.marca.id %}selected{% endif %}>{{ marca.nome }}</option>
               {% endfor %}
             </select></td>
             <td><input type="submit" class="btn btn-primary" value="Editar e salvar"></td>

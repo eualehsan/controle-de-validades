@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{% url 'cadastra_usuario' %}" method="POST" class="container">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Nome de usuário</span>
+        <input name="usuario" maxlength="12" type="text" class="form-control" required>
+        </div>
+
+        
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
+        <input name="nome" type="text" class="form-control" required>
+        </div>
+
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Sobrenome</span>
+        <input name="sobrenome" maxlength="12" type="text" class="form-control" required>
+        </div>
+
+        
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+        <input name="email" type="email" class="form-control" required>
+        </div>
+
+
+        <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Senha</label>
+        </div>
+        <div class="col-auto">
+            <input name="senha" type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        </div>
+        <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+            Sua senha deve ter de 8 a 20 caracteres contendo letras e números.
+            </span>
+        </div>
+        </div>
+    
+        <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Confirme sua senha</label>
+        </div>
+        <div class="col-auto">
+            <input name="confirm_senha" type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        </div>
+        </div>
+
+        <input class="btn btn-success" type="submit" value="Cadastrar-se">
+    </form>
+    
+{% endblock  %}

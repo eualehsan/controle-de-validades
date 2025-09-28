@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Categoria
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='loga_usuario')
 def lista_categorias(request):
     categorias = Categoria.objects.all()
     return render(request, 'lista_categorias.html', {'categorias': categorias})
 
+@login_required
 def cadastrar_categoria(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -13,6 +16,7 @@ def cadastrar_categoria(request):
         return redirect('lista_categorias')
     return render(request, 'cadastrar_categoria.html')
 
+@login_required
 def editar_categoria(request, id):
     if request.method == 'GET':
         categoria = get_object_or_404(Categoria, id=id)
@@ -29,6 +33,7 @@ def editar_categoria(request, id):
         return redirect('lista_categorias')
     return render(request, 'editar_categoria.html')
 
+@login_required
 def deleta_categoria(request, id):
     categoria = get_object_or_404(Categoria, id=id)
     categoria.delete()

@@ -7,9 +7,9 @@ class ValidadeInline(admin.TabularInline):
     extra = 1
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('codigo_barras','descricao', 'categoria', 'marca',)   
+    list_display = ('codigo_barras','descricao', 'categoria', 'marca', 'criado_por')   
     search_fields = ('descricao',)
-    list_filter = ('categoria', 'marca',)
+    list_filter = ('categoria', 'marca', 'criado_por')
     inlines = [ValidadeInline]
 
 admin.site.register(Produto, ProdutoAdmin)

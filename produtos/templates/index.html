@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Controle de validades</h1>
+{% if usuario.is_authenticated %}
+<h3>Olá, {{ usuario.get_full_name }}</h3>
+{% endif %}
+<hr>
 <ul>
     <li><a href="{% url 'lista_validades' %}"><i class="fa-solid fa-calendar"></i></i><p>Gerenciar Validades</p></a>
 </li>
@@ -9,6 +13,8 @@
     <li><a href="{% url 'lista_categorias' %}"><i class="fa-solid fa-tag"></i><p>Gerenciar Categorias</p></a></li>
     <li><a href="{% url 'lista_marcas' %}"><i class="fa-solid fa-building"></i><p>Gerenciar Marcas</p></a></li>
 </ul>
+
+<a href="{% url 'logout_usuario' %}" class="btn btn-danger">Sair</a>
 
 {% endblock content %}
 

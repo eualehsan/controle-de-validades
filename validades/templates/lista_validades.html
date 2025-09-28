@@ -3,12 +3,13 @@
   <div class="container">
       <table class="table">
         <a style="margin-right: 12px;" class="btn btn-success" href="{% url 'cadastrar_validade' %}">Cadastrar validade</a>
-    <thead>
+      <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">Código EAN</th>
+        <th scope="col">Marca</th>
         <th scope="col">Descrição</th>
         <th scope="col">Categoria</th>
-        <th scope="col">Marca</th>
         <th scope="col">Validade</th>
         <th scope="col">Quantidade</th>
         <th scope="col">Dias para vencer</th>
@@ -20,10 +21,11 @@
       <form action="{% url 'edita_validade' validade.id %}" method="POST">
         {% csrf_token %}
         <tr>
+            <td><img class="img-produto" src="{{ validade.produto.imagem }}"></td>
             <td>{{ validade.produto.codigo_barras }}</td>
+            <td>{{ validade.produto.marca.nome }}</td>
             <td>{{ validade.produto.descricao }}</td>
             <td>{{ validade.produto.categoria.nome }}</td>
-            <td>{{ validade.produto.marca.nome }}</td>
             <td>{{ validade.dt_validade | date:"d/m/y" }}</td>
             <td><input class="form-control" type="number" name="estoque" value="{{ validade.estoque }}"></td>
             <td>{% if validade.dias_p_vencer > 0 %} {{ validade.dias_p_vencer }} dias

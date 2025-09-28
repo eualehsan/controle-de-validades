@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Entre com seu usuário e senha</h1>
+    <form action="{% url 'loga_usuario' %}" method="POST" class="container">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Usuário</span>
+        <input name="usuario" maxlength="12" type="text" class="form-control" required>
+        </div>
+        
+        <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Senha</label>
+        </div>
+        <div class="col-auto">
+            <input name="senha" type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        </div>
+        <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+            Sua senha deve ter de 8 a 20 caracteres contendo letras e números.
+            </span>
+        </div>
+        </div>
+
+        <input class="btn btn-success" type="submit" value="Entrar">
+    </form>
+    <br>
+    <br>
+    <div class="container-sm"><p>Não tem uma conta?</p>
+    <a href="{% url 'cadastra_usuario' %}" class="btn btn-secondary">Criar conta</a>
+    </div>
+{% endblock  %}
